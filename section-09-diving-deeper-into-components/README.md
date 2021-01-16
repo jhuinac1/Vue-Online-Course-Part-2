@@ -6,6 +6,7 @@
 - Naming and folder Structure (specially as projects keep scaling up)
 
 
+## Component REgistraton and Styles
 
 ### Global Components
 
@@ -43,6 +44,8 @@ export default {
 
 
 ### Scoped Styles (component Styles)
+styles can be global or scoped to a component: Prefer scoped for most components.
+
 global style:
 ```
 <style>
@@ -63,7 +66,9 @@ Scoped: it tells vue that the styles in here should only apply to the template t
 ```
 
 
-### Slots (feature in vue components)
+## Slots (feature in vue components)
+Slots can be used to add a "placeholder" for dynamic HTML code.
+Multiple, named slots are possible, default fallbakcs can be provided. Scoped slots allow adv. use-cases.
 can be used (v-slot:anyName) OR  (#anyName)
 A stand alone component, flexible.
 custom template to wrap around other components.
@@ -195,3 +200,54 @@ On the template being used:
     </template>
 </course-goals>
 ```
+
+## Dynamic Components
+Components can be swapped dynamically via the built-n "component" component.
+Component caching can be added via the "keep-alive" component
+
+can be used instead of v-if components 
+
+
+from 
+```
+<active-goals v-if="selectedComponent === 'active-goals'"> </active-goals >
+<manage-goals v-if="selectedComponent === 'manage-goals'"> </manage-goals>
+```
+To:
+```
+<template>
+    <button @click="setSelectedComponent('active-goals')"> Active Goals </button>   
+    <button @click="setSelectedComponent('manage-goals')"> Manage Goals </button>
+    <component :is="selectedComponent"> </component>
+</template>
+<script>
+    data(){
+        return{
+            selectedComponent: "active-goals',
+        }
+    }
+     methods: {
+    setSelectedComponent(cmp){
+      this.selectedComponent = cmp
+    }
+  }
+</script>
+```
+
+
+### Teleport
+is a built in component, wrap it to the component that you want to move, by using a css selector.
+DOM structrue can be manipulated via "teleport" - it keeps the component hierarchy!
+```
+<teleport to="body">
+      <error-alert v-if="inputIsValid">
+        <h2>Input is invalid!</h2>
+        <p>Please enter at least a few characters...</p>
+        <button @click="confirmError">OK</button>
+      </error-alert>
+</teleport>
+```
+
+
+
+### Consider following the official style guide to keep code clean and understandable
