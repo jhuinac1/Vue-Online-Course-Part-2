@@ -6,7 +6,7 @@
 - Naming and folder Structure (specially as projects keep scaling up)
 
 
-## Component REgistraton and Styles
+## Component Registraton and Styles
 
 ### Global Components
 
