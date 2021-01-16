@@ -57,7 +57,7 @@ global style:
 component styles:
 
 Scoped: it tells vue that the styles in here should only apply to the template that lives in the component.
-```
+```vue
 <style scope>
     section: {
         color: red
