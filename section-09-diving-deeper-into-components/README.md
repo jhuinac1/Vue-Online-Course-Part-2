@@ -47,7 +47,7 @@ export default {
 styles can be global or scoped to a component: Prefer scoped for most components.
 
 global style:
-```
+```vue
 <style>
     section: {
         color: red
@@ -74,7 +74,7 @@ A stand alone component, flexible.
 custom template to wrap around other components.
 
 
-```
+```vue
 <template>
     <div> 
     //the slot tag allows for this compoenent to be a wrapper
@@ -94,7 +94,7 @@ export default {
 ```
 
 Named slots: used for multiple slots in one component, but one slot must not have a name
-```
+```vue
 <template>
     <div> 
         <header>
@@ -109,7 +109,7 @@ Named slots: used for multiple slots in one component, but one slot must not hav
 
 we can check if the a tag from the custom component is being used, and decide not to render if not content is being provided
 
-```
+```vue
 <template>
     <div> 
         <header v-if="$slots.header">
@@ -124,7 +124,7 @@ we can check if the a tag from the custom component is being used, and decide no
 
 To Use it in the desired component
  
- ```
+ ```vue
  <template>
   <section>
     <base-card>
@@ -154,7 +154,7 @@ is about letting you pass data from inside the component where slot defined, to 
 
 
 Inside the component where slot is defined
-```
+```vue
 <template>
     <ul> 
         <li v-for="goal in goals" :key="goal">
@@ -179,7 +179,7 @@ the markup to the slot
 here we define a name of choice, this variable will always be an object where all the props defined will merge in. 
 
 
-```
+```vue
 <template>
     <ul> 
         <li v-for="goal in goals" :key="goal">
@@ -192,7 +192,7 @@ here we define a name of choice, this variable will always be an object where al
 
 
 On the template being used:
-```
+```vue
 <course-goals>
     <template #default="slotProps">
         <h2> {{slotProps.item}} </h2>
@@ -209,12 +209,12 @@ can be used instead of v-if components
 
 
 from 
-```
+```vue
 <active-goals v-if="selectedComponent === 'active-goals'"> </active-goals >
 <manage-goals v-if="selectedComponent === 'manage-goals'"> </manage-goals>
 ```
 To:
-```
+```vue
 <template>
     <button @click="setSelectedComponent('active-goals')"> Active Goals </button>   
     <button @click="setSelectedComponent('manage-goals')"> Manage Goals </button>
@@ -238,7 +238,7 @@ To:
 ### Teleport
 is a built in component, wrap it to the component that you want to move, by using a css selector.
 DOM structrue can be manipulated via "teleport" - it keeps the component hierarchy!
-```
+```vue
 <teleport to="body">
       <error-alert v-if="inputIsValid">
         <h2>Input is invalid!</h2>
