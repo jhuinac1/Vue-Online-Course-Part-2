@@ -20,7 +20,7 @@ Cannot be passed down to other components.
 Vue can automatically can translate "TheHeader" -> "the-header"
 
 
-```
+```vue
 <template>
   <div>
     <the-header></the-header>
