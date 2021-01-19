@@ -1,22 +1,23 @@
 <template>
-<teleport to="body">
-  <!-- //it will be used to show an error message, OPEN will control visibility to and from the dom -->
-  <div @click="$emit('close')"> </div>
-  <dialog open>
-    <header>
-      <slot name="header">
-        <h2>{{ title }}</h2>
-      </slot>
-    </header>
-    <section>
-      <slot> </slot>
-    </section>
-    <menu>
-      <slot name="actions">
-          <base-button @click="$emit('close')"> Close </base-button> </slot>
-    </menu>
-  </dialog>
-</teleport>
+  <teleport to="body">
+    <!-- //it will be used to show an error message, OPEN will control visibility to and from the dom -->
+    <div @click="$emit('close')"></div>
+    <dialog open>
+      <header>
+        <slot name="header">
+          <h2>{{ title }}</h2>
+        </slot>
+      </header>
+      <section>
+        <slot> </slot>
+      </section>
+      <menu>
+        <slot name="actions">
+          <base-button @click="$emit('close')"> Close </base-button>
+        </slot>
+      </menu>
+    </dialog>
+  </teleport>
 </template>
 
 
@@ -28,7 +29,7 @@ export default {
       required: false,
     },
   },
-  emits: ["close"],
+  emits: ['close'],
 };
 </script>
 
